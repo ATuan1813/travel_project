@@ -4,7 +4,8 @@ public class UrlManage {
 	private static String ROOT = "/Travel_jsp_lab";
 	private static String USER_CREATE = ROOT + "/user-create";
 	private static String USER_UPDATE = ROOT + "/user-update";
-	private static String USER_DETAIL = ROOT + "/user-detail";
+	private static String ADMIN_USER_DETAIL = ROOT + "/user-detail";
+	private static String USER_DETAIL = ROOT + "/home/user-detail";
 	private static String USER_DELETE = ROOT + "/user-delete";
 	private static String USER_BLOCK = ROOT + "/user-block";
 	private static String USER_OPEN = ROOT + "/user-open";
@@ -15,8 +16,6 @@ public class UrlManage {
 	private static String USER_HOME = ROOT + "/index";
 
 
-
-	
 	public static String getRoot() {
 		return ROOT;
 	}
@@ -52,6 +51,9 @@ public class UrlManage {
 	}
 	public static String getHome() {
 		return USER_HOME;
+	}
+	public static String getAdminUserDetail() {
+		return ADMIN_USER_DETAIL;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package controller.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BookingDAO;
+import model.Booking;
 import model.User;
 import service.UserService;
 
@@ -24,6 +27,7 @@ public class UserDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		User user = userService.getById(req);
+
 		req.setAttribute("user", user);
 		req.getRequestDispatcher("/view/admin/UserDetail.jsp").forward(req, resp);
 	}

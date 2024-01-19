@@ -5,14 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import db.DbContext;
 import model.Booking;
-import model.Tour;
 
 public class BookingDAO {
+	
+	PersonDao dao = new PersonDao();
+	
 	public boolean insertBooking(Long quantityAdult, Long quantityChild, Long userBookingId, Long tourId) {
 	    Connection con = null;
 	    DbContext db = new DbContext();
@@ -141,5 +144,46 @@ public class BookingDAO {
 		return listBooking;
 	}
 	
+	public List<Booking> getByUserId(Long userId){
+		List<Booking> listBooking = new ArrayList<>();
+		Connection con = null;
+		DbContext db = new DbContext();
+		try {
+			con = db.getConnection();
+			String query = "SELECT b.id,t.name, SUM(CASE WHEN bp.people_id = 1 THEN bp.quantity ELSE 0 END) AS adult,\r\n"
+					+ "		SUM(CASE WHEN bp.people_id = 2 THEN bp.quantity ELSE 0 END) AS child,\r\n"
+					+ "		u.full_name, SUM(t.price * bp.quantity) as price, "
+					+ "		DATE_FORMAT(b.create_date, '%d-%m-%Y %H:%i:%s') as dateStr FROM booking b \r\n"
+					+ "		JOIN booking_people bp ON b.id = bp.booking_id \r\n"
+					+ "		JOIN tour t ON t.id = b.tour_id\r\n"
+					+ "		JOIN user u ON u.id = b.user_id\r\n"
+					+ " 	WHERE u.id = ?"
+					+ "		GROUP BY b.id, t.name,u.full_name\r\n"
+					+ "		ORDER BY create_date DESC";
+	        PreparedStatement pstmt = con.prepareStatement(query);
+
+	        pstmt.setLong(1, userId);
+	        ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Booking booking = new Booking();
+				booking.setId(rs.getLong("id"));
+				booking.setName(rs.getString("name"));
+				booking.setAdult(rs.getLong("adult"));
+				booking.setChild(rs.getLong("child"));
+				booking.setFullName(rs.getString("full_name"));
+				booking.setPrice(rs.getLong("price"));
+//				booking.setCreateDate(rs.getDate("create_date"));
+				booking.setDateStr(rs.getString("dateStr"));
+
+				listBooking.add(booking);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listBooking;
+	}
 
 }

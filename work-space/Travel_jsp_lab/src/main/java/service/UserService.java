@@ -113,7 +113,7 @@ public class UserService {
 	}
 
 	public User getById(HttpServletRequest request) {
-		Long userId = Long.parseLong(request.getParameter("id"));
+		Long userId = Long.parseLong(request.getParameter("userId"));
 
 		User user = userDao.getById(userId);
 		return user;

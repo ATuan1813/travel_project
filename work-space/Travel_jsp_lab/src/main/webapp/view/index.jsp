@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Home</title>
    	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -32,36 +32,39 @@
     <link rel="stylesheet" href="public/css/style.css">
    </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">dirEngine.</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="#" class="nav-link">Trang chủ</a></li>
-          <li class="nav-item"><a href="/Travel_jsp_lab/TourSearch" class="nav-link">Tour du lịch</a></li>
-	      <c:if test="${not isLogin}">
-     	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Login</span></a></li>
-	      </c:if>	
-	      <c:if test="${isLogin}">
-     	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Logout</span></a></li>
-	      </c:if>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <!-- END nav -->
+  
+ 	<!-- START NAV -->
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Hi Vacation</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="#" class="nav-link">Trang chủ</a></li>
+	          <li class="nav-item"><a href="/Travel_jsp_lab/TourSearch" class="nav-link">Tour du lịch</a></li>
+		      <c:if test="${not isLogin}">
+	     	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Login</span></a></li>
+		      </c:if>	
+		      <c:if test="${isLogin}">
+	              	  <li class="nav-item cta mr-2"><a href="/Travel_jsp_lab/acc-user-detail?userId=${user.id}" class="nav-link"><span>${user.username}</span></a></li>
+	     	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Logout</span></a></li>
+		      </c:if>
+	        </ul>
+	      </div>
+	    </div>
+	</nav>
+    <!-- END NAV -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('public/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Khám phá <br></strong> Thành Phố Tuyệt Vời Của Bạn </h1>
+            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Tìm một nơi đặc biệt dành cho bạn</p>
              <form action="Home" method="POST">
            		<div class="d-flex">
                  	<input type="text" class="form-control" id="keysearch" name="keysearch" placeholder="Ex: Vung tau">
@@ -83,55 +86,13 @@
       </div>
     </div>
 
-    <section class="ftco-section services-section bg-light">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-guarantee"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Best Price Guarantee</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-like"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Travellers Love Us</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Best Travel Agent</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-support"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">Our Dedicated Support</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
-              </div>
-            </div>      
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="ftco-section bg-light">
     	<div class="container">
 				<div class="row justify-content-start mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate">
-          	<span class="subheading">Special Offers</span>
-            <h2 class="mb-4"><strong>Top</strong> Tour Packages</h2>
+            <h2 class="mb-4"><strong>Top</strong> Tour For You</h2>
           </div>
         </div>    		
     	</div>
@@ -167,17 +128,10 @@
 	    						</div>
 	    						<p>${fn:substring(tour.description, 0, 50)}...</p>
 	    						<p class="days"><span>2 days 3 nights</span></p>
-	    						<hr>
-	    						<p class="bottom-area d-flex">
-	    							<span><i class="icon-map-o"></i> ${tour.address}</span> 
-	    							<span class="ml-auto"><a href="#">Discover</a></span>
-	    						</p>
 	    					</div>
 	    				</div>
 	    			</div>
 				</c:forEach>   
-    			
-    			
     		</div>
     	</div>
     </section>

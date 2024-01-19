@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="../../common/header.jsp" />
-<script src = "../../public/js/jquery-3.7.1.min.js"></script>
+<jsp:include page="../common/header.jsp" />
+<script src = "../public/js/jquery-3.7.1.min.js"></script>
 
 <title>User Detail Page</title>
 </head>
@@ -18,7 +18,7 @@
 
 			<div class="head-form d-flex justify-content-between">
 				<h3>Chi tiết</h3>
-				<a href="/Travel_jsp_lab/user-list" type="button" class="btn btn-close"></a>
+				<a href="/Travel_jsp_lab" type="button" class="btn btn-close"></a>
 			</div>
 
 			<hr>
@@ -70,13 +70,52 @@
 						</select>
 					</div>
 				</div>
-				
 				<!-- <div class="d-flex justify-content-end">
 					<button class="btn btn-secondary" >
 			      		<a class="text-decoration-none text-light" href="/Travel_jsp_lab/user-list">Đóng</a>
 			      	</button>
 				</div> -->
 			</form>
+		</div>
+		<div class="p-4 col-12 col-sm-12 col-md-10"> 
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Tên chuyến DL</th>
+						<th scope="col">SL người lớn</th>
+						<th scope="col">SL trẻ em</th>
+						<th scope="col">Khách hàng</th>
+						<th scope="col">Tổng tiền</th>
+						<th scope="col">Ngày đặt</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:if test="${listBooking.size() gt 0}">
+						<c:forEach items="${listBooking}" var="booking">
+							<tr>
+								<td>${booking.name}</td>
+								<td>${booking.adult}</td>
+								<td>${booking.child}</td>
+								<td>${booking.fullName}</td>
+								<td>${booking.price}</td>
+								<td>${booking.dateStr}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${listTour.size() eq 0}">
+						<tr>
+							<td>Không có booking nào.</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</c:if>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
@@ -89,5 +128,6 @@
         }
     }
 </script>
+
 </body>
 </html>

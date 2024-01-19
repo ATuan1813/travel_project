@@ -12,5 +12,5 @@ public class DbContext {
 	private final String dbName = "travel_db";
 	private final String portNumber = "3306";
 	private final String userID = "root";
-	private final String password = "password";
+	private final String password = "1234";
 }

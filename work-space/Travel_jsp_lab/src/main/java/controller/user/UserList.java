@@ -85,6 +85,7 @@ public class UserList extends HttpServlet {
 				users = userService.getAll(offset, size);
 			}
 		}
+		UrlManage url = new UrlManage();
 		List<Integer> sizeOptions = Arrays.asList(5, 10, 25, 100);
 		req.setAttribute("sizeOptions", sizeOptions);
 		req.setAttribute("keysearch", keysearch);
@@ -93,6 +94,7 @@ public class UserList extends HttpServlet {
 		req.setAttribute("size", size);
 		req.setAttribute("users", users);
 		req.setAttribute("userId", userId);
+		req.setAttribute("url", url);
 		req.getRequestDispatcher("/view/admin/UserList.jsp").forward(req, resp);
 	}
 
