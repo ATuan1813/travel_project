@@ -193,7 +193,7 @@
 					      	<p></p>
 					      	<button class="btn btn-success" onclick="confirmOpen(${user.id},'${user.username}')">Mở</button>
 					      	<button class="btn btn-info" >
-					      	<a class="text-decoration-none text-light" href="/Travel_jsp_lab/user-detail?id=${user.id}">Chi tiết</a>
+    							<a class="text-decoration-none text-light" href="${url.getAdminUserDetail()}?userId=${user.id}">Chi tiết</a>
 					      	</button>
 					      </td>
 					    </tr>

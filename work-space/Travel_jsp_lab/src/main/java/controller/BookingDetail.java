@@ -66,7 +66,7 @@ public class BookingDetail extends HttpServlet{
 	    BookingDAO bookingDao = new BookingDAO();
 	    Boolean result = bookingDao.insertBooking(quantityAdult, quantityChild, userId, tourId);
 	    if(result == true) {
-	    	 response.sendRedirect(request.getContextPath() + "/");
+	    	 response.sendRedirect(request.getContextPath()+"/acc-user-detail?userId=" + userId);
 	    }
 	}
 	

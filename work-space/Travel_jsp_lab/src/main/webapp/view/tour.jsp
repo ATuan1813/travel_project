@@ -35,7 +35,7 @@
     
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">dirEngine.</a>
+      <a class="navbar-brand" href="index.html">Hi Vacation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -48,6 +48,7 @@
      	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Login</span></a></li>
 	      </c:if>	
 	      <c:if test="${isLogin}">
+	              <li class="nav-item cta mr-2"><a href="/Travel_jsp_lab/acc-user-detail?userId=${user.id}" class="nav-link"><span>${user.username}</span></a></li>
      	          <li class="nav-item cta"><a href="/Travel_jsp_lab/user-login" class="nav-link"><span>Logout</span></a></li>
 	      </c:if>
         </ul>
@@ -61,8 +62,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Tour</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destination</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 3.6 }">Điểm đến</h1>
           </div>
         </div>
       </div>
@@ -154,11 +154,6 @@
 	    						</div>
 	    						<p>${fn:substring(tour.description, 0, 50)}...</p>
 	    						<p class="days"><span>2 days 3 nights</span></p>
-	    						<hr>
-	    						<p class="bottom-area d-flex">
-	    							<span><i class="icon-map-o"></i> ${tour.address}</span> 
-	    							<span class="ml-auto"><a href="#">Discover</a></span>
-	    						</p>
 	    					</div>
 	    				</div>
 	    			</div>

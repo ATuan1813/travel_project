@@ -10,6 +10,20 @@ public class Booking {
 	private Long child;
 	private String fullName;
 	private Date createDate;
+	private String dateStr;
+	
+	public Booking(Long id, Date createDate) {
+		super();
+		this.id = id;
+		this.createDate = createDate;
+	}
+	
+	
+	public Booking() {
+		super();
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -52,6 +66,10 @@ public class Booking {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
-	
+	public String getDateStr() {
+		return dateStr;
+	}
+	public void setDateStr(String dateStr) {
+		this.dateStr = dateStr;
+	}
 }
