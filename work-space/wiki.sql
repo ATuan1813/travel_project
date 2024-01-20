@@ -1,6 +1,8 @@
 CREATE DATABASE `travel_db`;
 use `travel_db`;
 
+SET FOREIGN_KEY_CHECKS = 0;
+
 CREATE TABLE `tour` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` TEXT,
@@ -21,7 +23,8 @@ CREATE TABLE `booking` (
   `create_date` DATETIME,
   `status` BOOLEAN,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (tour_id) REFERENCES tour(id)
+  FOREIGN KEY (tour_id) REFERENCES tour(id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE `people` (
@@ -61,18 +64,38 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) 
 );
 
+CREATE TABLE `comment`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint ,
+  `tour_id` bigint NULL DEFAULT NULL,
+  `text` text,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`)
+);
+
+CREATE TABLE `rate`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint,
+  `tour_id` bigint,
+  `number_star` int,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  FOREIGN KEY (`tour_id`) REFERENCES `tour` (`id`)
+);
+
 
 INSERT INTO `role` (`role`)
 VALUES ('ADMIN_ROLE'), ('USER_ROLE');
   
 INSERT INTO `user` VALUES 
-(1,'account1','123456789','hoangson3238@gmail.com','Nguyễn Thị Thúy Vi','HCM','0968900475','ACTIVATED',2),
-(2,'account2','123456789','hoangson3237@gmail.com','Nguyễn Thị Thủy Tiên','HCM','0968900475','ACTIVATED',1),
-(3,'account3','123456789','hoangson3236@gmail.com','Nguyễn Thị Thúy Hường','HCM','0968900475','ACTIVATED',2),
-(4,'account4','123456789','hoangson3235@gmail.com','Nguyễn Thị Thủy','HCM','0968900475','ACTIVATED',2),
-(5,'account5','123456789','hoangson3234@gmail.com','Nguyễn Thị Trúc','HCM','0968900475','ACTIVATED',2),
-(6,'account6','123456789','hoangson3233@gmail.com','Nguyễn Thị Quyên','HCM','0968900475','ACTIVATED',2),
-(7,'account7','123456789','hatran@gmail.com','Trần Văn Hà','Hà Nội','0968900477','ACTIVATED',2);
+(1,'baoanhvip','123456789','baoanh@gmail.com','Nguyễn Bảo Anh','HCM','1234567890','ACTIVATED',2),
+(2,'admin','123456789','admin@gmail.com','Nguyễn Luân admin','HCM','0998900129','ACTIVATED',1),
+(3,'haicon','123456789','haicon@gmail.com','Bá Hải','HCM','0968900789','ACTIVATED',2),
+(4,'thuyVi','123456789','vivertor@gmail.com','Hoàng Thúy Vi','HCM','0968900628','ACTIVATED',2),
+(5,'kaioken','123456789','akio@gmail.com','Nguyễn Thị Trúc','HCM','0968900782','ACTIVATED',2),
+(6,'quuyen','123456789','quenroi@gmail.com','Nguyễn Thị Quyên','HCM','0968900621','ACTIVATED',2),
+(7,'hatien','123456789','hatran@gmail.com','Trần Văn Hà','Hà Nội','0968900021','ACTIVATED',2);
 
 INSERT INTO `people` VALUES 
 ('1', 'adult'),
